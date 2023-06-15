@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "日期时间选择器",
-  "usingComponents": {
-    "s-date-picker": "/components/s-popup-picker/s-popup-picker"
-  }
-}
