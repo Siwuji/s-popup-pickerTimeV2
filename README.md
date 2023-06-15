@@ -3,9 +3,9 @@
 日期选择组件
 
 ## 基本用法
-	将s-popup-picker文件夹复制到components文件夹中,import+components引入。
+将s-popup-picker文件夹复制到components文件夹中,import+components引入。
 
-   ​```<template>
+   <template>
    	<view class="content">
    		<view>当前日期时间格式为:{{dateOption.format}}</view>
    		<input @focus="showPicker" placeholder="默认格式yyyy-MM-dd" :value="value" />
@@ -63,8 +63,7 @@
    			this.dateOption.format = "yyyy年MM月dd日HH时mm分ss秒"
    		}
    	}
-   }​```
-
+   }
 
 ### Events
 | 参数			| 说明			| 是否必传	|
