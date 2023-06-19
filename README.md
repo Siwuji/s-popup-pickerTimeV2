@@ -1,11 +1,11 @@
 
-# s-popup-pickerTime
+# swj-popup-pickerTime
 
 日期选择组件
 
 ## 基本用法
 
-> 	将s-popup-picker文件夹复制到components文件夹中,import+components引入。
+> 	将swj-popup-pickerTime文件夹复制到components文件夹中,import+components引入。
 
   
 
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-	import sDatePicker from '@/components/s-popup-pickerTime/s-popup-pickerTime.vue';
+	import sDatePicker from '@/components/swj-popup-pickerTime/swj-popup-pickerTime.vue';
 	export default {
 		data() {
 			return {
