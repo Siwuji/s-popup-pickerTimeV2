@@ -8,8 +8,8 @@
 				<text class="t2" @click="confirm">确认</text>
 			</view>
 			<view ref="pickerDom">
-				<picker-view v-if="visible" :indicator-style="indicatorStyle" :value="value" @change="bindChange"
-					class="picker-view">
+				<picker-view v-if="visible" immediate-change=true :indicator-style="indicatorStyle" :value="value"
+					@change="bindChange" class="picker-view">
 					<picker-view-column v-for="(e,index) in types" :key="index">
 						<view v-if="e == 'yyyy'" class="item" v-for="(yitem, yindex) in years" :key="yindex">
 							{{ yitem }}年
@@ -47,7 +47,8 @@
 				days: [],
 				hours: [],
 				mins: [],
-				secs: []
+				secs: [],
+				val: []
 			};
 		},
 		props: {
@@ -87,8 +88,9 @@
 			},
 			bindChange(e) {
 				const val = e.detail.value;
-				this.pickertime.changeValue(val);
+				this.val = val;
 				this.renderData();
+				this.pickertime.changeValue(val);
 			},
 			checkType() {
 				this.pickertime = new sPopupPickerTime(this.option);
