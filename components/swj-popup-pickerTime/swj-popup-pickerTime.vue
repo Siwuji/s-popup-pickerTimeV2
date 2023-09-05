@@ -72,6 +72,7 @@
 			hide(e) {
 				//隐藏
 				this.popFlag = false;
+				this.$emit('close', '');
 			},
 			show() {
 				this.checkType();
@@ -80,17 +81,17 @@
 			},
 			reset() {
 				this.$emit('confirm', '');
-				this.hide();
+				this.popFlag = false;
 			},
 			confirm() {
 				this.$emit('confirm', this.pickertime.getResult());
-				this.hide();
+				this.popFlag = false;
 			},
 			bindChange(e) {
 				const val = e.detail.value;
 				this.val = val;
-				this.renderData();
 				this.pickertime.changeValue(val);
+				this.renderData();
 			},
 			checkType() {
 				this.pickertime = new sPopupPickerTime(this.option);
@@ -113,7 +114,7 @@
 <style>
 	.picker-view {
 		width: 750rpx;
-		height: 460rpx;
+		height: 600rpx;
 		margin-top: 20rpx;
 	}
 
