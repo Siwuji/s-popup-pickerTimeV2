@@ -1,16 +1,18 @@
 <template>
 	<view class="content">
 		<view>当前日期时间格式为:{{dateOption.format}}</view>
-		<input @focus="showPicker" placeholder="默认格式yyyy-MM-dd" :value="dateOption.defaultValue" />
+		<view @click="showPicker" class="main">
+			{{dateOption.defaultValue?dateOption.defaultValue:'默认格式yyyy-MM-dd'}}
+		</view>
 		<button @click="changeDateParms('yyyy-MM-dd HH:mm:ss')">年月日时分秒</button>
-		<button @click="changeDateParms('yyyy-MM-dd HH:mm')">年月日时分?</button>
+		<button @click="changeDateParms('yyyy/MM/dd HH:mm')">年月日时分?</button>
 		<button @click="changeDateParms('MM-dd HH:mm')">月日时分</button>
 		<button @click="changeDateParms('HH:mm:ss')">时分秒</button>
 		<button @click="changeDateParms(('yyyy年MM月dd日 HH时mm分ss秒'))">来个中文?</button>
 
 		<view class="default">
 			注释：<br />
-			1.format默认为yyyy-MM-dd，可不传。<br />
+			1.format默认为yyyy/MM/dd，可不传。<br />
 			2.能通过uni编译的小程序应该都可以使用,因我只试了微信和钉钉，所以其它小程序需要自行测试。<br />
 			3.defaultValue/minTime/maxTime尽量和format格式相同<br />
 			4.从时分秒转换为年月日时,记得将minTime/maxTime或者yearArea同步修改一下，否则可能切换后年份只有当年<br />
@@ -26,23 +28,22 @@
 		data() {
 			return {
 				dateOption: {
-					format: 'yyyy-MM-dd', //日期格式
-					defaultValue: "2022-05-06", //非必填：默认时间
+					format: 'yyyy-MM-dd HH:mm', //日期格式
+					defaultValue: "2023-9-5 16:00:00", //非必填：默认时间
 					minTime: '', //非必填:最小时间
 					maxTime: '', //非必填:最大时间
-					yearArea: [2021,2025], //非必填:年份区间[2021,2025]，如果minTime/maxTime有值，优先级高于yearArea
+					yearArea: [2021, 2025], //非必填:年份区间[2021,2025]，如果minTime/maxTime有值，优先级高于yearArea
 					showClearBtn: true //是否显示清除按钮
 				}
 			}
 		},
-		onLoad() {
-
-		},
+		onLoad() {},
 		components: {
 			sDatePicker
 		},
 		methods: {
 			showPicker() {
+				//showPicker时需要修改option属性的话,this.$refs.datePicker.show嵌套一个setTimeout方法。
 				this.$refs.datePicker.show();
 			},
 			saveDate(e) {
@@ -62,7 +63,7 @@
 		padding: 24rpx;
 	}
 
-	.content>input {
+	.main {
 		display: block;
 		margin: 24rpx 0;
 		padding: 12rpx 8rpx;
