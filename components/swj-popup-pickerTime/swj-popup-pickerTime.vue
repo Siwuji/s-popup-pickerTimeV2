@@ -56,9 +56,9 @@
 				type: Object,
 				default: () => ({
 					format: 'yyyy-MM-dd', //日期格式
-					defaultValue: "2021-05-10",
-					minTime: '1990-01-10',
-					maxTime: '2023-06-01',
+					defaultValue: "",
+					minTime: '',
+					maxTime: '',
 					showClearBtn: true
 				})
 			}
