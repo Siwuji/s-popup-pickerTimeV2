@@ -56,9 +56,9 @@
 				type: Object,
 				default: () => ({
 					format: 'yyyy-MM-dd', //日期格式
-					defaultValue: "",
-					minTime: '',
-					maxTime: '',
+					defaultValue: "2021-05-10",
+					minTime: '1990-01-10',
+					maxTime: '2023-06-01',
 					showClearBtn: true
 				})
 			}
@@ -72,7 +72,6 @@
 			hide(e) {
 				//隐藏
 				this.popFlag = false;
-				this.$emit('close', '');
 			},
 			show() {
 				this.checkType();
@@ -81,17 +80,17 @@
 			},
 			reset() {
 				this.$emit('confirm', '');
-				this.popFlag = false;
+				this.hide();
 			},
 			confirm() {
 				this.$emit('confirm', this.pickertime.getResult());
-				this.popFlag = false;
+				this.hide();
 			},
 			bindChange(e) {
 				const val = e.detail.value;
 				this.val = val;
-				this.pickertime.changeValue(val);
 				this.renderData();
+				this.pickertime.changeValue(val);
 			},
 			checkType() {
 				this.pickertime = new sPopupPickerTime(this.option);
@@ -114,8 +113,11 @@
 <style>
 	.picker-view {
 		width: 750rpx;
-		height: 600rpx;
 		margin-top: 20rpx;
+		min-height: 460rpx;
+		/* #ifndef MP-ALIPAY */
+		height: 600rpx;
+		/*#endif */
 	}
 
 	.item {
